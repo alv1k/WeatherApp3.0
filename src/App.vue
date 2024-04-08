@@ -2,25 +2,29 @@
 import Weather from './components/Weather.vue';
 import Daily from './components/Daily.vue';
 import HomeStatus from './components/HomeStatus.vue';
+import QuestionBlock from './components/QuestionBlock.vue';
+import StickyNotes from './components/StickyNotes.vue';
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import { weatherAPI_URL, weatherAPI_KEY } from './constants'
 
 let weatherInfo = ref(null);
-let city = 'Yakutsk';
+let city = ref('Yakutsk');
 
 function getWeather() {
-  fetch(`${weatherAPI_URL}?q=${city}&appid=${weatherAPI_KEY}&units=metric`)
-    .then((response) => response.json())
-      .then((data) => weatherInfo.value = data)
-
-  // axios.get(`${weatherAPI_URL}?q=Yakutsk&appid=${weatherAPI_KEY}&units=metric`)
+  // fetch(`${weatherAPI_URL}?q=${city.value}&appid=${weatherAPI_KEY}&units=metric`)
   //   .then((response) => response.json())
   //     .then((data) => weatherInfo.value = data)
+
+  axios.get(`${weatherAPI_URL}?q=${city.value}&appid=${weatherAPI_KEY}&units=metric`)
+    // .then((response) => response.json())
+      .then((data) => weatherInfo.value = data)
 }
 function getTime(){
-
+    this.date = new Date();
+    return data;
 }
+
 onMounted(getWeather)
 
 // const getAxiosWeather = async () => {
@@ -36,9 +40,11 @@ onMounted(getWeather)
 </script>
 <template>
   <div class="bg-blue-100 p-2">
-    <Weather v-on:getWeather="getWeather" :weatherInfo="weatherInfo" />
+    <Weather :getWeather="getWeather" :weatherInfo="weatherInfo" />
     <HomeStatus />
     <Daily />
+    <QuestionBlock />
+    <StickyNotes />
   </div>
 </template>
 

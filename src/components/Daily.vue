@@ -1,57 +1,59 @@
 <script setup>
 import {ref} from 'vue';
 
-
-
-const todoList = [];
-
-let todoListArray = [];
-
-let valueInput = 'New task';
+let todoList = ref('');
+let todoListArray = new ref([]);
 
 function addToList() {
-    todoListArray.push(todoList.value)
-    console.log(todoListArray);
+    todoListArray.value.push(todoList.value)
+    todoList.value = ''
 }
-function addTask(todoListArray) {
-    console.log(todoListArray.length);
+function deleteTodoItem(item) {
+    todoListArray.value.splice(todoListArray.value.indexOf(item), 1)
+    
 }
-function handlyInput(event){
-    this.valueInput = event.target.value;
-}
-// function addTask() {
-//     console.log(1);
-// }
 </script>
 <template>
     <div class="bg-blue-300 p-2 rounded-xl">
-        <p> DAily ji est'</p>          
+        <p> Daily </p>          
         <div class="bg-blue-100 rounded-xl mx-auto p-2 shadow mb-2">
-            <p>Pomodoro tracker</p>
+            <p>tracker</p>
             <div class="shadow-lg p-2 rounded">
                 <p>to-do list</p>
                 <div class="flex">
 
-                    <input  @input="handlyInput" v-model="todoListArray" class="w-5/6 rounded pl-1" type="text"> 
+                    <input v-model="todoList" @keyup.enter="addToList()" class="w-5/6 rounded pl-1" type="text" value=""> 
 
-                    <button @click="addTask" type="submit" class="ml-2">add</button>
+                    <button type="submit" class="ml-2">add</button>
+
                 </div>
-                <ul>
-                    <li class="p-2" v-for="item in todoList"> 
-                        <svg width="20" height="20" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <use xlink:href="../assets/images/operators/operators.svg#pomodoro" />
-                        </svg>
+
+
+                <ul class="w-48 py-1">
+                    <li class="border-solid border-black border-[1px] rounded p-1 flex justify-between" v-for="item in todoListArray"> 
+                        <img src="../assets/images/icones/streamline-emojis-2.svg" alt="">
                         <span>
                             {{ item }}
                         </span>
+                        <img class="" src="../assets/images/icones/streamline-emojis-cloud-2.svg" alt="">
+                        <button @click="deleteTodoItem(item)">del</button>
                     </li>
                 </ul>
             </div>
         </div>
-        
-        <div class="bg-blue-100 rounded-xl mx-auto p-2 shadow mb-2"></div>
-        <div class="bg-blue-100 rounded-xl mx-auto p-2 shadow mb-2"></div>
-        <div class="bg-blue-100 rounded-xl mx-auto p-2 shadow mb-2"></div>
+        <div class="flex justify-between">
+
+            <div class="bg-blue-100 w-1/3 h-40 mr-1 rounded-xl p-2 shadow mb-2">
+                <p>doing</p>
+            </div>
+            <div class="bg-blue-100 w-1/3 rounded-xl p-2 shadow mb-2">
+                <p>urgent</p>
+                
+            </div>
+            <div class="bg-blue-100 w-1/3 ml-1 rounded-xl p-2 shadow mb-2">
+                <p>done</p>
+            </div>
+        </div>
 
     </div>
 </template>

@@ -64,19 +64,33 @@
 
                 </div>
             </div>
-            <div class="p-1 bg-slate-200 rounded shadow-md">
+            <div class="p-1 bg-slate-200 rounded shadow-md w-full">
                 <p>camera data</p>
                 <p>20.20.20 г.</p>
-                <div class="shadow-md m-1">
+                <div class="m-1">
                     <div class="flex mt-2">
-                        <div class="bg-black w-6 h-4 mr-1"></div>
-                        <div class="bg-black w-6 h-4 mr-1"></div>
-                        <div class="bg-black w-6 h-4"></div>
+                        <div class="bg-black w-12 h-8 mr-1">
+                            <img src="../C:/Users/Professional/IdeaProjects/PixelDetect1.2/asssets/screenshots/all-screens/5114631873545535939.bmp" alt="">
+                        </div>
+                        door
                     </div>
                     <div class="flex mt-2">
-                        <div class="bg-black w-6 h-4 mr-1"></div>
-                        <div class="bg-black w-6 h-4 mr-1"></div>
-                        <div class="bg-black w-6 h-4"></div>
+                        <div class="bg-black w-12 h-8 mr-1">
+
+                        </div>
+                        garage
+                    </div>
+                    <div class="flex mt-2">
+                        <div class="bg-black w-12 h-8 mr-1">
+
+                        </div>
+                        inside
+                    </div>
+                    <div class="flex mt-2">
+                        <div class="bg-black w-12 h-8 mr-1">
+
+                        </div>
+                        street
                     </div>
                 </div>
             </div>
